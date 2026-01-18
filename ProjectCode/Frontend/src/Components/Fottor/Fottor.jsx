@@ -24,6 +24,8 @@ export const Fottor = () => {
     { name: "Godfred A . Amoako", github: "https://github.com/brakoose" },
     { name: "Amina Sall", github: "https://linkedin.com/in/aminata-sall-9a930a2ab" },
     { name: "Timilehin Olamijulo", github: "https://linkedin.com/in/timix" },
+    { name: "Adorgloh Eric", github: "https://linkedin.com/in/eric-adorgloh" },
+
   ];
 
   const quickLinks = [
@@ -59,7 +61,7 @@ export const Fottor = () => {
               <li key={index}>
                 <a
                   href={link.href}
-                  className="text-gray-400 hover:text-blue-400 transition-colors duration-200 text-lg"
+                  className="text-gray-400 hover:text-[#2bbbbb] transition-colors duration-200 text-lg"
                 >
                   {link.name}
                 </a>
@@ -78,7 +80,7 @@ export const Fottor = () => {
                 href={member.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-blue-400 transition-colors duration-200 text-lg"
+                className="text-gray-400 hover:text-[#2bbbbb] transition-colors duration-200 text-lg"
               >
                 {member.name}
               </a>
@@ -90,11 +92,11 @@ export const Fottor = () => {
           <p className="text-xl font-bold mb-4 text-white">Contact Us</p>
           <div className="space-y-3 mb-6">
             <p className="flex items-center justify-center md:justify-start text-lg">
-              <FaEnvelope className="mr-2 text-blue-400" />
-              <a href={`mailto:${contactInfo.email}`} className="hover:text-blue-400">{contactInfo.email}</a>
+              <FaEnvelope className="mr-2 text-[#2bbbbb]" />
+              <a href={`mailto:${contactInfo.email}`} className="hover:text-[#2bbbbb]">{contactInfo.email}</a>
             </p>
             <p className="flex items-center justify-center md:justify-start text-lg">
-              <span className="mr-2 text-blue-400">&#9742;</span> {/* Unicode for phone icon */}
+              <span className="mr-2 text-[#2bbbbb]">&#9742;</span> {/* Unicode for phone icon */}
               {contactInfo.phone}
             </p>
             <p className="text-lg">

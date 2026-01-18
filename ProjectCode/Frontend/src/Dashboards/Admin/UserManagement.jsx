@@ -1,9 +1,9 @@
-import {useState,useEffect} from "react"
+import { useState, useEffect } from "react"
 import axiosInstance from "../../api/AxiosInstance"
-import {MessageModal} from "./MessageModel"
-import {AddUserForm} from "./AddUser"
-import {ConfirmationModal} from "./ConformMessage"
-export const  UserManagementTable=() =>{
+import { MessageModal } from "./MessageModel"
+import { AddUserForm } from "./AddUser"
+import { ConfirmationModal } from "./ConformMessage"
+export const UserManagementTable = () => {
   const [users, setUsers] = useState([]);
   const [showAddUserModal, setShowAddUserModal] = useState(false);
   const [showConfirmDeleteModal, setShowConfirmDeleteModal] = useState(false);
@@ -12,13 +12,13 @@ export const  UserManagementTable=() =>{
   const [messageModalContent, setMessageModalContent] = useState({ title: '', message: '' });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [user,setUser]=useState('');
+  const [user, setUser] = useState('');
   const fetchUsers = async () => {
     setLoading(true);
     setError(null);
     try {
       const response = await axiosInstance.get('/api/users');
-      if (response.status!==200) {
+      if (response.status !== 200) {
         throw new Error('Failed to fetch users');
       }
       const data = response.data;
@@ -39,14 +39,14 @@ export const  UserManagementTable=() =>{
     fetchUsers();
   }, []);
 
-  const handleEditUser =async (userId) => {
-    try{
-        const response=await axiosInstance.get(`/api/users/${userId}`);
-        setUser(response.data);
-        handleAddUserClick();
+  const handleEditUser = async (userId) => {
+    try {
+      const response = await axiosInstance.get(`/api/users/${userId}`);
+      setUser(response.data);
+      handleAddUserClick();
     }
-    catch(error){
-        throw new Error('Failed to get user');
+    catch (error) {
+      throw new Error('Failed to get user');
     }
   };
 
@@ -61,7 +61,7 @@ export const  UserManagementTable=() =>{
       const response = await axiosInstance.delete(`/api/users/${userToDeleteId}`, {
 
       });
-      if (response.status!==200) {
+      if (response.status !== 200) {
         throw new Error('Failed to delete user');
       }
       setUsers(users.filter(user => user._id !== userToDeleteId));
@@ -92,7 +92,7 @@ export const  UserManagementTable=() =>{
 
   const handleCloseAddUserModal = () => {
     setShowAddUserModal(false);
-    fetchUsers(); 
+    fetchUsers();
   };
 
   const handleAddUserSubmit = (newUser) => {
@@ -106,7 +106,7 @@ export const  UserManagementTable=() =>{
       <div className="mt-6 text-right mb-4">
         <button
           onClick={handleAddUserClick}
-          className="bg-[#007FFF] hover:bg-blue-700 text-white font-bold py-2.5 px-6 rounded-lg transition-colors duration-200 shadow-lg"
+          className="bg-[#2bbbbb] hover:bg-[#25a0a0] text-white font-bold py-2.5 px-6 rounded-lg transition-colors duration-200 shadow-lg"
         >
           Add New User
         </button>
@@ -114,7 +114,7 @@ export const  UserManagementTable=() =>{
 
       <div className="overflow-x-auto rounded-lg shadow">
         <table className="min-w-full bg-white border border-gray-300 rounded-lg">
-          <thead className="bg-gradient-to-r bg-[#007FFF] text-white">
+          <thead className="bg-[#2bbbbb] text-white">
             <tr>
               <th className="py-3 px-4 text-left text-xs font-semibold uppercase tracking-wider rounded-tl-lg">Name</th>
               <th className="py-3 px-4 text-left text-xs font-semibold uppercase tracking-wider">Email</th>
@@ -142,7 +142,7 @@ export const  UserManagementTable=() =>{
                   <td className="py-3 px-4 whitespace-nowrap text-sm text-gray-600">{user.gender || 'N/A'}</td>
                   <td className="py-3 px-4 whitespace-nowrap text-sm text-gray-600">{user.age || 'N/A'}</td>
                   <td className="py-3 px-4 whitespace-nowrap text-center">
-                    
+
                     <button
                       onClick={() => handleDeleteUserClick(user._id)}
                       className="bg-red-500 hover:bg-red-600 text-white font-bold py-1.5 px-3 rounded-md text-xs transition-colors duration-200 shadow-sm"
@@ -158,7 +158,7 @@ export const  UserManagementTable=() =>{
       </div>
 
       {showAddUserModal && (
-        <AddUserForm onAddUser={handleAddUserSubmit} onClose={handleCloseAddUserModal} user={user}/>
+        <AddUserForm onAddUser={handleAddUserSubmit} onClose={handleCloseAddUserModal} user={user} />
       )}
 
       <ConfirmationModal

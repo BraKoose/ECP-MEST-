@@ -110,13 +110,13 @@ export const Navbar = () => {
   };
 
   return (
-    <div className='px-1 py-2 fixed w-full top-0 bg-white shadow-lg text-black z-20'>
+    <div className='px-1 py-2 fixed w-full top-0 bg-white/95 backdrop-blur-md shadow-md text-gray-800 z-50 transition-all duration-300'>
       <div className='flex justify-between items-center container mx-auto'>
         <div className="flex items-center mb-4 md:mb-0">
-          <svg className="w-10 md:w-12 mt-2 md:h-12 text-[#F37021]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg className="w-10 md:w-12 mt-2 md:h-12 text-[#2bbbbb]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
           </svg>
-          <h1 className='h-10 md:px-2 py-2 text-[#F37021] text-xl md:text-xl lg:text-2xl font-extrabold tracking-tight'>EIT MEST Complaint Platform</h1>
+          <h1 className='h-10 md:px-2 py-2 text-[#2bbbbb] text-xl md:text-xl lg:text-2xl font-extrabold tracking-tight'>ECP MEST</h1>
         </div>
 
         <nav className='hidden md:block'>
@@ -125,8 +125,8 @@ export const Navbar = () => {
               <li
                 key={index}
                 className={`font-semibold cursor-pointer text-lg
-                  ${active === item.name ? "bg-[#007FFF] text-white px-3 py-1 rounded-full" : "text-gray-700"}
-                  transition-colors duration-300`}
+                  ${active === item.name ? "bg-[#2bbbbb] text-white px-3 py-1 rounded-full shadow-md" : "text-gray-600 hover:text-[#2bbbbb]"}
+                  transition-all duration-300`}
               >
                 <Link
                   to={item.path}
@@ -145,7 +145,7 @@ export const Navbar = () => {
             {profile ? (
               <li className="relative">
                 <div
-                  className="w-10 h-10 bg-[#007FFF] text-white rounded-full flex items-center justify-center cursor-pointer text-lg font-bold"
+                  className="w-10 h-10 bg-[#2bbbbb] text-white rounded-full flex items-center justify-center cursor-pointer text-lg font-bold shadow-md hover:shadow-lg transition-all"
                   onClick={toggleProfileDropdown}
                 >
                   {getInitials(profile.username)}
@@ -175,7 +175,7 @@ export const Navbar = () => {
                 )}
               </li>
             ) : (
-              <Link to="/login" className='bg-[#007FFF] text-white px-6 py-1 rounded-full text-xl ml-4'>Login</Link>
+              <Link to="/login" className='bg-[#2bbbbb] hover:bg-[#25a0a0] text-white px-6 py-1 rounded-full text-xl ml-4 shadow-md transition-all'>Login</Link>
             )}
           </ul>
         </nav>
@@ -184,7 +184,7 @@ export const Navbar = () => {
           {profile && (
             <div className="relative mr-1">
               <div
-                className="w-10 h-10 py-2 bg-[#007FFF] text-white rounded-full flex items-center justify-center cursor-pointer text-lg font-bold"
+                className="w-10 h-10 py-2 bg-[#2bbbbb] text-white rounded-full flex items-center justify-center cursor-pointer text-lg font-bold shadow-md"
                 onClick={toggleProfileDropdown}
               >
                 {getInitials(profile.username)}
@@ -214,8 +214,8 @@ export const Navbar = () => {
               )}
             </div>
           )}
-          <button className="text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#007FFF] p-2 rounded-md" onClick={handleToggleMenu}>
-            <TiThMenu className="w-8 h-8 text-[#007FFF]" />
+          <button className="text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#2bbbbb] p-2 rounded-md" onClick={handleToggleMenu}>
+            <TiThMenu className="w-8 h-8 text-[#2bbbbb]" />
           </button>
         </div>
       </div>
@@ -232,19 +232,20 @@ export const Navbar = () => {
           transform transition-transform duration-300 ease-in-out
           ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
-        <div className="flex justify-end p-4">
-          <button className="text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#007FFF] p-2 rounded-md" onClick={handleToggleMenu}>
-            <MdClose className="w-8 h-8 text-[#007FFF]" />
+        <div className="flex justify-between items-center p-4 border-b border-gray-100">
+          <span className="text-2xl font-extrabold text-[#2bbbbb]">ECP</span>
+          <button className="text-gray-500 hover:text-[#2bbbbb] focus:outline-none transition-colors" onClick={handleToggleMenu}>
+            <MdClose className="w-8 h-8" />
           </button>
         </div>
-        <nav className='block px-2'>
+        <nav className='block px-4 py-4'>
           <ul className='flex flex-col gap-6 items-center'>
             {navLinks.map((item, index) => (
               <li
                 key={index}
-                className={`font-semibold cursor-pointer text-lg w-full text-center py-2 rounded-full
-                  ${active === item.name ? "bg-[#007FFF] text-white" : "text-gray-700"}
-                  transition-colors duration-300`}
+                className={`font-semibold cursor-pointer text-lg w-full text-center py-2 rounded-lg
+                  ${active === item.name ? "bg-[#2bbbbb] text-white shadow-md" : "text-gray-600 hover:bg-gray-50 hover:text-[#2bbbbb]"}
+                  transition-all duration-300`}
               >
                 <Link
                   to={item.path}
@@ -261,7 +262,7 @@ export const Navbar = () => {
               </li>
             ))}
             {!profile && (
-              <Link to="/login" className='bg-[#007FFF] text-white px-6 py-2 rounded-full text-xl mt-4'>Login</Link>
+              <Link to="/login" className='bg-[#2bbbbb] text-white px-8 py-3 rounded-full text-xl mt-4 shadow-lg w-full text-center'>Login</Link>
             )}
           </ul>
         </nav>

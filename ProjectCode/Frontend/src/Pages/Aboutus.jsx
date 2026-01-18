@@ -34,7 +34,7 @@ export const AboutUs = () => {
 
         <div className='flex-1 text-gray-700 space-y-6 md:space-y-2'>
           <p className='text-lg leading-relaxed'>
-            Welcome to <strong className='font-semibold text-blue-600'>EIT complaint</strong>, your dedicated platform for efficient complaint registration and management.
+            Welcome to <strong className='font-semibold text-[#2bbbbb]'>EIT complaint</strong>, your dedicated platform for efficient complaint registration and management.
             We understand that encountering issues can be frustrating, and our mission is to provide a seamless,
             transparent, and effective channel for you to voice your concerns and track their resolution.
           </p>
@@ -54,7 +54,7 @@ export const AboutUs = () => {
 
       <div className='mt-20 sm:mt-24 lg:mt-28'>
         <div className='text-center mb-12'>
-          <h3 className='text-3xl text-[#007FFF] font-extrabold  tracking-tight sm:text-4xl lg:text-5xl mb-4'>
+          <h3 className='text-3xl text-[#2bbbbb] font-extrabold  tracking-tight sm:text-4xl lg:text-5xl mb-4'>
             Our Core Values
           </h3>
           <p className='mt-4 text-xl text-gray-600 max-w-2xl mx-auto'>
@@ -67,9 +67,9 @@ export const AboutUs = () => {
               key={index}
               className='flex flex-col items-center justify-center bg-white rounded-xl shadow-md p-8
                            transition-all duration-300 ease-in-out transform hover:-translate-y-2 hover:shadow-xl
-                           border border-gray-200 hover:border-blue-300'
+                           border border-gray-200 hover:border-[#2bbbbb]'
             >
-              <div className='text-5xl text-blue-600 mb-6 flex-shrink-0'>
+              <div className='text-5xl text-[#2bbbbb] mb-6 flex-shrink-0'>
                 {item.icon}
               </div>
               <h3 className='text-2xl font-semibold text-gray-900 mb-3 text-center'>

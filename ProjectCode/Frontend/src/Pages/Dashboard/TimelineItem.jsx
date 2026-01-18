@@ -12,7 +12,7 @@ export const TimelineItem = ({ event, currentUserId }) => {
 
     if (event.type === 'Message') {
         if (isCurrentUser) {
-            messageBubbleClasses += " bg-blue-100 self-end";
+            messageBubbleClasses += " bg-[#e9f8f8] self-end";
         } else {
             messageBubbleClasses += " bg-gray-100 self-start";
         }
@@ -24,7 +24,7 @@ export const TimelineItem = ({ event, currentUserId }) => {
 
     return (
         <div className="relative mb-6 flex items-start gap-3">
-            <div className="absolute -left-[14px] top-1/2 -translate-y-1/2 w-4 h-4 bg-blue-500 rounded-full border-2 border-white z-10"></div>
+            <div className="absolute -left-[14px] top-1/2 -translate-y-1/2 w-4 h-4 bg-[#2bbbbb] rounded-full border-2 border-white z-10"></div>
 
             <div className="flex-1 ml-4 bg-white rounded-lg p-4 shadow-md border border-gray-100">
                 <div className="flex items-center justify-between mb-2">
@@ -41,7 +41,7 @@ export const TimelineItem = ({ event, currentUserId }) => {
                 ) : (
                     <p className={messageContentClasses}>{event.details}</p>
                 )}
-                 {event.sender && (
+                {event.sender && (
                     <p className="text-xs text-gray-500 mt-1 text-right">
                         — {senderName} ({senderRole})
                     </p>

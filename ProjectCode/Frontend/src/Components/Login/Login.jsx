@@ -195,7 +195,7 @@ export const Login = () => {
         <div className="p-8 text-center bg-gray-50 rounded-b-lg animate-fade-in">
           <h2 className="text-3xl font-bold text-green-600 mb-4">Verification Sent!</h2>
           <p className="text-gray-700 text-lg mb-6">
-            A verification link has been sent to <span className="font-semibold text-[#F37021]">{signupEmail}</span>.
+            A verification link has been sent to <span className="font-semibold text-[#2bbbbb]">{signupEmail}</span>.
             Please check your inbox and click the link to activate your account.
           </p>
           <button
@@ -203,7 +203,7 @@ export const Login = () => {
               setShowEmailVerificationMessage(false);
               setActiveTab("Login");
             }}
-            className="w-full bg-[#F37021] text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300 text-lg font-semibold shadow-md"
+            className="w-full bg-[#2bbbbb] text-white px-6 py-3 rounded-lg hover:bg-[#25a0a0] transition duration-300 text-lg font-semibold shadow-md"
           >
             Back to Login
           </button>
@@ -223,7 +223,7 @@ export const Login = () => {
               setShowPasswordSetSuccess(false);
               setActiveTab("Login");
             }}
-            className="w-full bg-[#F37021] text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300 text-lg font-semibold shadow-md"
+            className="w-full bg-[#2bbbbb] text-white px-6 py-3 rounded-lg hover:bg-[#25a0a0] transition duration-300 text-lg font-semibold shadow-md"
           >
             Back to Login
           </button>
@@ -240,7 +240,7 @@ export const Login = () => {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#F37021] focus:border-transparent text-lg shadow-sm transition duration-200"
+                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2bbbbb] focus:border-transparent text-lg shadow-sm transition duration-200"
                 value={loginEmail}
                 onChange={(e) => setLoginEmail(e.target.value)}
                 required
@@ -251,7 +251,7 @@ export const Login = () => {
               <input
                 type={showLoginPassword ? "text" : "password"}
                 placeholder="Enter your password"
-                className="w-full pl-12 pr-12 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#F37021] focus:border-transparent text-lg shadow-sm transition duration-200"
+                className="w-full pl-12 pr-12 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2bbbbb] focus:border-transparent text-lg shadow-sm transition duration-200"
                 value={loginPassword}
                 onChange={(e) => handlePasswordChange(setLoginPassword, e.target.value)}
                 required
@@ -266,15 +266,15 @@ export const Login = () => {
 
             <div className="flex items-center justify-between flex-wrap gap-2">
               <p
-                className="text-gray-600 text-sm cursor-pointer hover:text-[#F37021] transition duration-200"
+                className="text-gray-600 text-sm cursor-pointer hover:text-[#2bbbbb] transition duration-200"
                 onClick={() => setActiveTab("SignUp")}
               >
-                Don't have an account? <span className="font-semibold text-[#F37021]">Sign Up</span>
+                Don't have an account? <span className="font-semibold text-[#2bbbbb]">Sign Up</span>
               </p>
               <button
                 type="button"
                 onClick={() => setActiveTab("ForgotPassword")}
-                className="text-sm font-semibold text-[#F37021] hover:text-blue-700 transition duration-300"
+                className="text-sm font-semibold text-[#2bbbbb] hover:text-[#25a0a0] transition duration-300"
               >
                 Forgot Password?
               </button>
@@ -283,7 +283,7 @@ export const Login = () => {
 
             <button
               type="submit"
-              className="w-full bg-[#F37021] text-white px-6 py-3 rounded-xl hover:bg-blue-700 transition duration-300 text-xl font-semibold shadow-md"
+              className="w-full bg-[#2bbbbb] text-white px-6 py-3 rounded-xl hover:bg-[#25a0a0] transition duration-300 text-xl font-semibold shadow-md"
             >
               Login
             </button>
@@ -297,7 +297,7 @@ export const Login = () => {
               <input
                 type="text"
                 placeholder="Choose a username"
-                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#F37021] focus:border-transparent text-lg shadow-sm transition duration-200"
+                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2bbbbb] focus:border-transparent text-lg shadow-sm transition duration-200"
                 value={signupUsername}
                 onChange={(e) => setSignupUsername(e.target.value)}
                 required
@@ -308,7 +308,7 @@ export const Login = () => {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#F37021] focus:border-transparent text-lg shadow-sm transition duration-200"
+                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2bbbbb] focus:border-transparent text-lg shadow-sm transition duration-200"
                 value={signupEmail}
                 onChange={(e) => setSignupEmail(e.target.value)}
                 required
@@ -319,7 +319,7 @@ export const Login = () => {
               <input
                 type={showSignupPassword ? "text" : "password"}
                 placeholder="Create a password"
-                className="w-full pl-12 pr-12 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#F37021] focus:border-transparent text-lg shadow-sm transition duration-200"
+                className="w-full pl-12 pr-12 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2bbbbb] focus:border-transparent text-lg shadow-sm transition duration-200"
                 value={signupPassword}
                 onChange={(e) => handlePasswordChange(setSignupPassword, e.target.value)}
                 required
@@ -335,7 +335,7 @@ export const Login = () => {
               <input
                 type="checkbox"
                 id="agent-checkbox-signup"
-                className="h-5 w-5 text-[#F37021] rounded border-gray-300 focus:ring-[#F37021] cursor-pointer"
+                className="h-5 w-5 text-[#2bbbbb] rounded border-gray-300 focus:ring-[#2bbbbb] cursor-pointer"
                 checked={isAgent}
                 onChange={(e) => setIsAgent(e.target.checked)}
               />
@@ -345,15 +345,15 @@ export const Login = () => {
             </div>
             <div className="flex items-center">
               <p
-                className="text-gray-600 text-sm cursor-pointer hover:text-[#F37021] transition duration-200"
+                className="text-gray-600 text-sm cursor-pointer hover:text-[#2bbbbb] transition duration-200"
                 onClick={() => setActiveTab("Login")}
               >
-                Already have an account? <span className="font-semibold text-[#F37021]">Login</span>
+                Already have an account? <span className="font-semibold text-[#2bbbbb]">Login</span>
               </p>
             </div>
             <button
               type="submit"
-              className="w-full bg-[#F37021] text-white px-6 py-2 rounded-xl hover:bg-blue-700 transition duration-300 text-xl font-semibold shadow-md"
+              className="w-full bg-[#2bbbbb] text-white px-6 py-2 rounded-xl hover:bg-[#25a0a0] transition duration-300 text-xl font-semibold shadow-md"
             >
               Sign Up
             </button>
@@ -372,7 +372,7 @@ export const Login = () => {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#F37021] focus:border-transparent text-lg shadow-sm transition duration-200"
+                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2bbbbb] focus:border-transparent text-lg shadow-sm transition duration-200"
                 value={forgotPasswordEmail}
                 onChange={(e) => setForgotPasswordEmail(e.target.value)}
                 required
@@ -380,14 +380,14 @@ export const Login = () => {
             </div>
             <button
               type="submit"
-              className="w-full bg-[#F37021] text-white px-6 py-3 rounded-xl hover:bg-blue-700 transition duration-300 text-xl font-semibold shadow-md"
+              className="w-full bg-[#2bbbbb] text-white px-6 py-3 rounded-xl hover:bg-[#25a0a0] transition duration-300 text-xl font-semibold shadow-md"
             >
               Send Verification Code
             </button>
             <button
               type="button"
               onClick={() => setActiveTab("Login")}
-              className="w-full text-[#F37021] mt-4 py-2 hover:underline text-md font-medium"
+              className="w-full text-[#2bbbbb] mt-4 py-2 hover:underline text-md font-medium"
             >
               Back to Login
             </button>
@@ -398,7 +398,7 @@ export const Login = () => {
           <form onSubmit={handleSubmit} className="space-y-6 p-8 bg-white rounded-b-xl">
             <h2 className="text-2xl font-bold text-gray-800 text-center mb-2">Verify Code</h2>
             <p className="text-gray-600 text-center mb-4">
-              An OTP has been sent to <span className="font-semibold text-[#F37021]">{forgotPasswordEmail}</span>.
+              An OTP has been sent to <span className="font-semibold text-[#2bbbbb]">{forgotPasswordEmail}</span>.
               Please enter it below.
             </p>
             <div className="relative">
@@ -406,7 +406,7 @@ export const Login = () => {
               <input
                 type="text"
                 placeholder="Enter OTP"
-                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#F37021] focus:border-transparent text-lg shadow-sm transition duration-200"
+                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2bbbbb] focus:border-transparent text-lg shadow-sm transition duration-200"
                 value={otp}
                 onChange={(e) => setOtp(e.target.value)}
                 required
@@ -414,14 +414,14 @@ export const Login = () => {
             </div>
             <button
               type="submit"
-              className="w-full bg-[#F37021] text-white px-6 py-3 rounded-xl hover:bg-blue-700 transition duration-300 text-xl font-semibold shadow-md"
+              className="w-full bg-[#2bbbbb] text-white px-6 py-3 rounded-xl hover:bg-[#25a0a0] transition duration-300 text-xl font-semibold shadow-md"
             >
               Verify OTP
             </button>
             <button
               type="button"
               onClick={() => setActiveTab("ForgotPassword")}
-              className="w-full text-[#F37021] mt-4 py-2 hover:underline text-md font-medium"
+              className="w-full text-[#2bbbbb] mt-4 py-2 hover:underline text-md font-medium"
             >
               Resend Code
             </button>
@@ -432,7 +432,7 @@ export const Login = () => {
           <form onSubmit={handleSubmit} className="space-y-6 p-8 bg-white rounded-b-xl">
             <h2 className="text-2xl font-bold text-gray-800 text-center mb-2">Verify Email</h2>
             <p className="text-gray-600 text-center mb-4">
-              An OTP has been sent to <span className="font-semibold text-[#F37021]">{emailVerificationEmail}</span>.
+              An OTP has been sent to <span className="font-semibold text-[#2bbbbb]">{emailVerificationEmail}</span>.
               Please enter it below to activate your account.
             </p>
             <div className="relative">
@@ -440,7 +440,7 @@ export const Login = () => {
               <input
                 type="text"
                 placeholder="Enter Email OTP"
-                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#F37021] focus:border-transparent text-lg shadow-sm transition duration-200"
+                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2bbbbb] focus:border-transparent text-lg shadow-sm transition duration-200"
                 value={otp}
                 onChange={(e) => setOtp(e.target.value)}
                 required
@@ -448,14 +448,14 @@ export const Login = () => {
             </div>
             <button
               type="submit"
-              className="w-full bg-[#F37021] text-white px-6 py-3 rounded-xl hover:bg-blue-700 transition duration-300 text-xl font-semibold shadow-md"
+              className="w-full bg-[#2bbbbb] text-white px-6 py-3 rounded-xl hover:bg-[#25a0a0] transition duration-300 text-xl font-semibold shadow-md"
             >
               Verify Email
             </button>
             <button
               type="button"
               onClick={() => setActiveTab("Login")} // Or some other appropriate action
-              className="w-full text-[#F37021] mt-4 py-2 hover:underline text-md font-medium"
+              className="w-full text-[#2bbbbb] mt-4 py-2 hover:underline text-md font-medium"
             >
               Back to Login
             </button>
@@ -473,7 +473,7 @@ export const Login = () => {
               <input
                 type={showNewPassword ? "text" : "password"}
                 placeholder="New Password"
-                className="w-full pl-12 pr-12 py-1 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#F37021] focus:border-transparent text-lg shadow-sm transition duration-200"
+                className="w-full pl-12 pr-12 py-1 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2bbbbb] focus:border-transparent text-lg shadow-sm transition duration-200"
                 value={newPassword}
                 onChange={(e) => handlePasswordChange(setNewPassword, e.target.value)}
                 required
@@ -490,7 +490,7 @@ export const Login = () => {
               <input
                 type={showConfirmNewPassword ? "text" : "password"}
                 placeholder="Confirm New Password"
-                className="w-full pl-12 pr-12 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#F37021] focus:border-transparent text-lg shadow-sm transition duration-200"
+                className="w-full pl-12 pr-12 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2bbbbb] focus:border-transparent text-lg shadow-sm transition duration-200"
                 value={confirmNewPassword}
                 onChange={(e) => handlePasswordChange(setConfirmNewPassword, e.target.value)}
                 required
@@ -504,14 +504,14 @@ export const Login = () => {
             </div>
             <button
               type="submit"
-              className="w-full bg-[#F37021] text-white px-6 py-3 rounded-xl hover:bg-blue-700 transition duration-300 text-xl font-semibold shadow-md"
+              className="w-full bg-[#2bbbbb] text-white px-6 py-3 rounded-xl hover:bg-[#25a0a0] transition duration-300 text-xl font-semibold shadow-md"
             >
               Reset Password
             </button>
             <button
               type="button"
               onClick={() => setActiveTab("Login")}
-              className="w-full text-[#F37021] mt-4 py-2 hover:underline text-md font-medium"
+              className="w-full text-[#2bbbbb] mt-4 py-2 hover:underline text-md font-medium"
             >
               Back to Login
             </button>
@@ -523,7 +523,7 @@ export const Login = () => {
   };
 
   return (
-    <div className='bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen flex items-center justify-center p-4'>
+    <div className='bg-gradient-to-br from-[#e9f8f8] to-[#d6f0f0] min-h-screen flex items-center justify-center p-4'>
       <div className='bg-white rounded-xl shadow-2xl overflow-hidden w-full max-w-md transform '>
         {(activeTab === "Login" || activeTab === "SignUp") && (
           <div className='flex justify-between items-center bg-gray-50 border-b border-gray-200'>
@@ -538,7 +538,7 @@ export const Login = () => {
                 }}
                 className={`flex-1 text-center py-2 text-xl font-semibold transition-all duration-300
                   ${activeTab === item
-                    ? "text-[#F37021] border-b-4 border-[#F37021]"
+                    ? "text-[#2bbbbb] border-b-4 border-[#2bbbbb]"
                     : "text-gray-700 hover:bg-gray-100"
                   }`}
               >
