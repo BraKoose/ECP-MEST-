@@ -10,7 +10,12 @@ const { Server } = require("socket.io");
 app.set('trust proxy', 1);
 const store = new MongoDBStore({
   uri: process.env.MONGO_URL,
-  collection: 'sessions'
+  collection: 'sessions',
+  connectionOptions: {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 10000
+  }
 });
 
 store.on('error', (error) => {
@@ -32,7 +37,7 @@ app.use(session({
 }));
 
 app.use(cors({
-  origin: "https://resolveflow.onrender.com",
+  origin: ["https://ecp-mest-wzwj.onrender.com", "http://localhost:5173", "http://localhost:4173"],
   credentials: true,
 }));
 app.use(cookieParser());
@@ -48,7 +53,7 @@ connect();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: 'https://resolveflow.onrender.com',
+    origin: ["https://ecp-mest.onrender.com", "http://localhost:5173", "http://localhost:4173"],
     methods: ["GET", "POST"],
     credentials: true
   }
