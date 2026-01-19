@@ -142,7 +142,7 @@ export const Navbar = () => {
                 </Link>
               </li>
             ))}
-            {profile ? (
+            {profile && (
               <li className="relative">
                 <div
                   className="w-10 h-10 bg-[#2bbbbb] text-white rounded-full flex items-center justify-center cursor-pointer text-lg font-bold shadow-md hover:shadow-lg transition-all"
@@ -174,8 +174,6 @@ export const Navbar = () => {
                   </div>
                 )}
               </li>
-            ) : (
-              <Link to="/login" className='bg-[#2bbbbb] hover:bg-[#25a0a0] text-white px-6 py-1 rounded-full text-xl ml-4 shadow-md transition-all'>Login</Link>
             )}
           </ul>
         </nav>
@@ -261,9 +259,7 @@ export const Navbar = () => {
                 </Link>
               </li>
             ))}
-            {!profile && (
-              <Link to="/login" className='bg-[#2bbbbb] text-white px-8 py-3 rounded-full text-xl mt-4 shadow-lg w-full text-center'>Login</Link>
-            )}
+            {/* Removed Login Button */}
           </ul>
         </nav>
       </div>

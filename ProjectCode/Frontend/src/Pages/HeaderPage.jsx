@@ -25,18 +25,15 @@ export const HeaderPage = () => {
     <div className='bg-gradient-to-r from-[#2bbbbb] to-[#0db6c9] text-white flex justify-center items-center py-32 px-4 sm:px-6 lg:px-8 min-h-[60vh] rounded-b-2xl shadow-xl'>
       <div className='max-w-4xl mx-auto text-center'>
         <h1 className='text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight sm:leading-tight lg:leading-snug mb-4'>
-          Your Concerns, Our Priority.
-        </h1>
-        <h1 className='text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight sm:leading-tight lg:leading-snug mb-6'>
-          Resolved, Effortlessly.
+          ECP MEST Complaints
         </h1>
 
         <p className='text-lg sm:text-xl text-blue-100 max-w-2xl mx-auto mb-10'>
-          A centralized platform for efficient complaint resolution and improved satisfaction for MEST community.
+          Efficient resolution for the MEST community.
         </p>
 
         <button className='bg-white text-[#2bbbbb] font-bold py-3 px-8 sm:py-4 sm:px-10 rounded-full text-lg sm:text-xl shadow-lg transition-all duration-300 transform hover:scale-105 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-blue-300' onClick={() => onClickComplaint()}>
-          Submit Your Complaint Now
+          Submit Complaint
         </button>
       </div>
     </div>
