@@ -64,7 +64,7 @@ const UserRouter = require("./Controllers/userManagement");
 ComplaintRouter.setSocketIO(io);
 
 app.get("/", (req, res) => {
-  res.send("Hello from the MERN backend!");
+  res.send("Hello from the ECP MEST Backend");
 });
 app.use('/attachments', express.static('attachments'));
 app.use("/api", LoginRouter);
