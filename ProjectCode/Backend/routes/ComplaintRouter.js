@@ -50,12 +50,18 @@ router.setSocketIO = (socketIOInstance => {
     io = socketIOInstance;
 })
 
-router.post('/complaint', verifyToken, upload.array('attachments', 5), async (req, res) => {
+router.post('/complaint', upload.array('attachments', 5), async (req, res) => {
     console.log(req.body);
-    const { title, category, description, productName, purchaseDate, contactDetails, attachments } = req.body;
+    const { title, category, description, productName, purchaseDate, contactDetails } = req.body;
 
     console.log("Uploaded files (req.files):", req.files);
-    const id = req.user.id;
+
+    // Handle anonymous user
+    const userId = req.user ? req.user.id : null;
+    const userRole = req.user ? req.user.role : 'Guest';
+    const username = req.user ? req.user.username : (contactDetails?.email || 'Anonymous');
+    const userEmail = req.user ? req.user.email : contactDetails?.email;
+
     try {
         const attachments = req.files?.map(file => ({
             fileName: file.originalname,
@@ -63,8 +69,9 @@ router.post('/complaint', verifyToken, upload.array('attachments', 5), async (re
             fileUrl: `/attachments/${file.filename}`,
         }));
         console.log(attachments);
+
         const newComplaint = new Complaint({
-            userId: id,
+            userId: userId,
             title,
             category,
             description,
@@ -74,26 +81,31 @@ router.post('/complaint', verifyToken, upload.array('attachments', 5), async (re
             attachments,
             timelineEvents: [{
                 eventType: 'Complaint Registered',
-                description: `Complaint "${title}" registered by ${req.user.username}.`,
-                actor: req.user.id,
-                actorRole: req.user.role,
+                description: `Complaint "${title}" registered by ${username}.`,
+                actor: userId, // Can be null for guest
+                actorRole: userRole,
                 timestamp: new Date(),
             }]
         })
 
         await newComplaint.save();
-        await sendEmail(
-            req.user.email,
-            'New Complaint is Registered SuccessFully on  ResolveFlow',
-            `Our Admin will Lookup the complaint and very soon.`,
-            `<p>Our admin is going to Assign the <strong>Agent very soon</strong></p><p>Thanks for a registering the complaint .</p><p>From Team @ ResolveFlow.</p>`
-        );
+
+        if (userEmail) {
+            await sendEmail(
+                userEmail,
+                'New Complaint is Registered SuccessFully on  ResolveFlow',
+                `Our Admin will Lookup the complaint and very soon.`,
+                `<p>Our admin is going to Assign the <strong>Agent very soon</strong></p><p>Thanks for a registering the complaint .</p><p>Your Complaint ID is: <strong>${newComplaint._id}</strong>. You can track it using this ID.</p><p>From Team @ ResolveFlow.</p>`
+            );
+        }
+
         const complaint = await Complaint.findById(newComplaint._id).populate('assignedTo', 'username email').populate('userId', 'username email');
+
         io.to('admin_alerts').emit('newComplaintRegister', {
             complaintId: newComplaint?._id,
             title: title,
             complaint: complaint,
-            username: req.user.username
+            username: username
         })
         console.log(`New complaint ${newComplaint._id} registered. Notifying admins.`);
         return res.status(200).json(newComplaint);
@@ -330,7 +342,7 @@ router.get('/:agentId/workload', verifyToken, async (req, res) => {
         res.status(500).json({ message: 'Server error fetching workload.' });
     }
 });
-router.get("/complaint/:id", verifyToken, async (req, res) => {
+router.get("/complaint/:id", async (req, res) => {
     try {
         const complaint = await Complaint.findById(req.params.id)
             .populate('userId', 'username email')

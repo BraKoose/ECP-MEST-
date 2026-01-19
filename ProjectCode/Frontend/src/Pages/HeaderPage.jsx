@@ -19,12 +19,7 @@ export const HeaderPage = () => {
       })
   }, [])
   const onClickComplaint = () => {
-    if (profile.role === 'user') {
-      navigate('/user-dashboard/new-complaint')
-    }
-    else {
-      toast.info("Sorry!Complaint can submit only User!");
-    }
+    navigate('/new-complaint');
   }
   return (
     <div className='bg-gradient-to-r from-[#2bbbbb] to-[#0db6c9] text-white flex justify-center items-center py-32 px-4 sm:px-6 lg:px-8 min-h-[60vh] rounded-b-2xl shadow-xl'>
