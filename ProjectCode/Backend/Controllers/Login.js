@@ -20,9 +20,7 @@ const Login = async (req, res) => {
             return res.status(401).json({ message: "Invalid credentials (wrong password)" });
         }
 
-        if (!findUser.verified) {
-            return res.status(403).json({ message: "Please verify your email before logging in." });
-        }
+
 
         req.session.user = {
             id: findUser._id,
@@ -76,40 +74,35 @@ const Sign = async (req, res) => {
             roles = "user";
         }
 
-        const otp = generateOtp();
-        const otpExpires = new Date(Date.now() + 15 * 60 * 1000);
-
         const newUser = new User({
             name: name,
             email: email,
             password: password,
             role: roles,
-            verified: false,
-            otp: otp,
-            otpExpires: otpExpires,
-            otpType: 'email_verify'
+            verified: true, // Auto-verified
         });
 
         await newUser.save();
 
-        console.log(`Email verification OTP for ${email}: ${otp}`);
-
-        try {
-            await sendEmail(
-                email,
-                'Verify Your Email for ResolveFlow',
-                `Your email verification OTP is: ${otp}\nThis OTP is valid for 15 minutes.`,
-                `<p>Your email verification OTP is: <strong>${otp}</strong></p><p>This OTP is valid for 15 minutes.</p><p>Please enter this code on the website to verify your email address.</p>`
-            );
-        } catch (emailError) {
-            console.error("Failed to send verification email (continuing registration for testing):", emailError.message);
-            // We proceed anyway so the user can test the flow. The OTP is logged in the console.
-        }
+        // Generate token immediately for auto-login
+        const payload = {
+            id: newUser._id,
+            username: newUser.name,
+            email: newUser.email,
+            role: newUser.role
+        };
+        const token = await generateToken(payload);
 
         return res.status(201).json({
-            message: "Registered Successfully! Please check your email (or backend console) for the verification OTP.",
-            email: email,
-            status: "pending_email_verification"
+            message: "Registered Successfully! Login Successful.",
+            status: true,
+            token: token,
+            user: {
+                id: newUser._id,
+                email: newUser.email,
+                name: newUser.name,
+                role: newUser.role,
+            }
         });
     } catch (error) {
         console.error("Sign-up error:", error);

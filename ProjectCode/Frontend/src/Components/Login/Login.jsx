@@ -94,14 +94,14 @@ export const Login = () => {
       try {
         const response = await axios.post(url, { name: signupUsername, password: signupPassword, email: signupEmail, type: isAgent ? 'agent' : 'user' }, { withCredentials: true });
 
-        if (response.data?.status === "pending_email_verification") {
-          addNotification(response.data.message, 'success');
-          setEmailVerificationEmail(response.data.email);
-          setActiveTab("VerifyEmail");
+        if (response.data?.status === true) {
+          addNotification(response.data?.message, "success");
+          if (response.data.token) {
+            localStorage.setItem('jwtToken', response.data.token);
+          }
+          navigate('/');
         } else if (response.data?.message) {
           addNotification(response.data.message, 'success');
-        } else {
-          addNotification("Registration successful!", 'success');
         }
       } catch (error) {
         if (error.response && error.response.data && error.response.data.message) {
